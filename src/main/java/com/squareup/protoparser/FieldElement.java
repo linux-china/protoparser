@@ -56,7 +56,7 @@ public abstract class FieldElement {
   public final String toSchema() {
     StringBuilder builder = new StringBuilder();
     appendDocumentation(builder, documentation());
-    if (label() != Label.ONE_OF) {
+    if (label() != Label.ONE_OF && label() != Label.NONE) {
       builder.append(label().name().toLowerCase(Locale.US)).append(' ');
     }
     builder.append(type())
@@ -75,7 +75,7 @@ public abstract class FieldElement {
   }
 
   public enum Label {
-    OPTIONAL, REQUIRED, REPEATED,
+    OPTIONAL, REQUIRED, REPEATED, NONE,
     /** Indicates the field is a member of a {@code oneof} block. */
     ONE_OF
   }
